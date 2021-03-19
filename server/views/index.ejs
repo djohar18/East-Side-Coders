@@ -1,0 +1,30 @@
+<% include partials/header.ejs %>
+<% include partials/main_nav.ejs %>
+
+<div class="container">
+    <div class="offset-md-1 col-md-10">
+
+        <!-- create a new survey -->
+        <a href="#" class="btn btn-primary btn-lg mt-2 ml-2">Create a new survey</a>
+
+        <!-- repeatable card -->
+        <% for (let count = 0; count < surveyList.length; count++) { %>
+            <div class="card m-2">
+                <div class="card-header">
+                    Survey No <%= count + 1 %>.
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"> <%= surveyList[count].type %> </h5>
+                    <p class="card-text"> <%= surveyList[count].question %> </p>
+                    <a href="/<%= surveyList[count].type %>/<%= surveyList[count]._id %>" 
+                    class="btn btn-primary">Answer</a>
+                </div>
+            </div>
+        <% } %>
+
+    </div>
+</div>
+
+<% include partials/bottom_nav.ejs %>
+<% include partials/footer.ejs %>
+

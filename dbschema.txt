@@ -1,0 +1,54 @@
+{
+    surveys:
+    [
+        {
+            "_id": 1,
+            "type": "Agree/Disagree",
+            "activated": true,
+            "creator": "Cha",
+            "question": "You want to be an web app developer?",
+            "options":
+                [
+                    {
+                        "option": "agree",
+                        "voted": 3
+                    },
+                    {
+                        "option": "disagree",
+                        "voted": 5
+                    }
+                ],
+        },
+
+        {
+            "_id": 2,
+            "type": "Multiple Choice",
+            "activated": false,
+            "creator": "Cha",
+            "question": "Why web app developer is good?",
+            "options":
+                [
+                    {
+                        "option": "The pay is good",
+                        "voted": 10
+                    },
+                    {
+                        "option": "There are many jobs available",
+                        "voted": 23
+                    },
+                    {
+                        "option": "I just love how web works",
+                        "voted": 6
+                    }
+                ],
+        },
+        {
+            "_id": 3,
+            "type": "Text Answer",
+            "activated": true,
+            "creator": "Cha",
+            "question": "What web app you want to develop as a personal project?",
+            "options": []
+        }
+    ]
+}
