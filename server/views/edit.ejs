@@ -14,7 +14,7 @@
                     <select class="survey" name="survey" id="survey">
                         <option>----- Select Survey Type -----</option>
                       <option value="Agree or Disagree">Agree or Disagree</option>
-                      <option value="Multiple Choice">Multiple Choice </option>
+                      <option value="MCQ">Multiple Choice </option>
                       <option value="Text">Text Question</option>
                       </select>
                     </div>
@@ -23,7 +23,39 @@
                     <br>
                     <br>
                     <div>
+                        <% if (typeof displayName == 'MCQ' && displayName) { %>}
                         <label form="question"><h5><strong>Enter The Question :</strong> </h5></label><br>
+                        <input class="survey" type="text" 
+                        class="form-control" 
+                        id="question" 
+                        placeholder="Enter The Question" 
+                        name="name" 
+                         required>
+                         <br>
+                         <label form="option"><h5><strong>Enter The Option:</strong> </h5></label><br>
+                         <input class="survey" type="text" 
+                         class="form-control" 
+                         id="option" 
+                         placeholder="Enter The option" 
+                         name="name" 
+                          required>
+
+                          <input class="survey" type="text" 
+                          class="form-control" 
+                          id="option" 
+                          placeholder="Enter The Option" 
+                          name="name" 
+                           required>
+
+                           <input class="survey" type="text" 
+                          class="form-control" 
+                          id="option" 
+                          placeholder="Enter The Option" 
+                          name="name" 
+                           required>
+
+                        <% } else { %>
+                            <label form="question"><h5><strong>Enter The Question :</strong> </h5></label><br>
                         <input class="survey" type="text" 
                         class="form-control" 
                         id="question" 
@@ -33,6 +65,8 @@
                          <br><br> <br> <br> <br> <br><br>
                          <br><br>
                          <br><br>
+                            <% } %>
+                        
                          
                     </div>
                     
