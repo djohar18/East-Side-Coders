@@ -19,6 +19,10 @@ router.get('/TextAnswer/:id', indexController.displayTextAnswerPage);
 router.get('/create', function(req, res, net){
     res.render('create', {title: 'Create'})
 })
+
+// process create request
+router.post('create', indexController.processCreateRequest)
+
 //edit page
 router.get('/edit', function(req, res, net){
     res.render('edit', {title: 'Edit'})
