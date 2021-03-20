@@ -6,7 +6,7 @@
         <div class="col-md-offset-3 col-md-8">
             <br>
             <br>
-            <h1><%= title %></h1>
+           <p> <h1><%= title %></h1></p>
             <form class="form" method="POST" action="/create">                
                 <label for="type"><h5><strong>Choose a type of survey:</strong> </h5></label>
                 <div>
@@ -17,8 +17,8 @@
                     </select>
                 </div>
 
-                <% if (typeof displayName == 'MCQ' && displayName) { %>}
-                <label form="question"><h5><strong>Enter The Question :</strong> </h5></label><br>
+                <p><% if (typeof displayName == 'MCQ' && displayName) { %>}
+                <label form="question"><h5><strong>Enter The Question :</strong> </h5></label></p><br>
                 <input class="survey" type="text" 
                 class="form-control" 
                 id="question" 
@@ -52,7 +52,7 @@
                     <label form="question"><h5><strong>Enter The Question :</strong> </h5></label><br>
                     <input class="survey" type="text" class="form-control" id="question" placeholder="Enter The Question" name="question" required>
                 <% } %>
-                <div>
+                <div><br>
                     <button class="btn btn-primary" type="submit" >
                        <i class="far fa-submit"></i>Submit
                     </button>                   

@@ -6,7 +6,7 @@
         <div class="col-md-offset-3 col-md-8">
             <br>
                          <br>
-            <h1>Edit Survey</h1>
+            <p><h1>Edit Survey</h1></p>
             <form class="form" method="POST" action="/edit/<%= Survey._id %>">
                     <label for="type"> <h5><strong>Select a survey type to edit:</strong> </h5></label>
                     <div>
@@ -16,9 +16,9 @@
                       <option value="Text">Text Question</option>
                       </select>
                     </div>
-                    <div>
+                    <div><p>
                         <% if (typeof displayName == 'MCQ' && displayName) { %>}
-                        <label form="question"><h5><strong>Enter The Question :</strong> </h5></label><br>
+                        <label form="question"><h5><strong>Edit The Question :</strong> </h5></label></p><br>
                         <input class="survey" type="text" class="form-control" id="question" placeholder="Enter The Question" name="name" required>
                          <br>
                          <label form="option"><h5><strong>Enter The Option:</strong> </h5></label><br>
@@ -29,13 +29,13 @@
                            <input class="survey" type="text" class="form-control" id="option" placeholder="Enter The Option" name="name" required>
 
                         <% } else { %>
-                            <label form="question"><h5><strong>Enter The Question :</strong> </h5></label><br>
+                            <label form="question"><h5><strong>Edit The Question :</strong> </h5></label><br>
                         <input class="survey" type="text" class="form-control" id="question" placeholder="Enter The Question" name="question" value="<%= Survey.question %>" required>
                         <% } %>
                         
                          
                     </div>
-                    <div>
+                    <div><br>
                         <button class="btn btn-primary" type="submit" >
                             <i class="far fa-submit"></i>Submit
                         </button>
