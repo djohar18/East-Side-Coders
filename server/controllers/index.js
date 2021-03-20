@@ -3,8 +3,12 @@ let Survey = require('../models/survey');
 // render index(survey list) page
 module.exports.displayHomePage = (req, res, next) => {
     Survey.find((err, surveyList) => {
-        if (err) { return console.error(err); }
-        res.render('index', { title: 'Survey', surveyList: surveyList });
+        if (err) 
+        {
+            return console.error(err);
+        }
+
+        res.render('home', { title: 'Survey', surveyList: surveyList });
     });
 };
 
@@ -49,3 +53,24 @@ module.exports.displayTextAnswerPage = (req, res, next) => {
         }
     })
 };
+
+module.exports.processCreateRequest = (req, res, next) => {
+    let newSurvey = Survey({
+        "type": req.body.type,
+        "activated": req.body.activated,
+        "question": req.body.question,
+        "options" : req.body.options
+    });
+
+    Survey.create(newSurvey, (err, Survey) => {
+        if(err)
+        {
+            console.log(err);
+            res.end(err);
+        }
+        else
+        {            
+                res.redirect('/');
+        }
+    });
+}
