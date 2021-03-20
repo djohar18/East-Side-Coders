@@ -1,9 +1,68 @@
-.logoimage{
-  
-    position:inherit;
-    border-radius: 5px;
-    width: 150px;
-    margin: -15px;
-    bottom: 1px;
-    
+/* custom css goes here */
+
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   }
+  
+  a {
+    color: #00B7FF;
+  }
+  
+  /* Setting up the box sizing*/
+  *,
+  *::before,
+  *::after {
+        box-sizing:border-box;
+  }
+:root{
+    --clr-accent: #16e0bd;
+}
+  /* hovering the nav links and the logo*/
+.nav-link:hover{
+    opacity: .7;
+    transform: scale(1.2);
+    }
+    .img-fluid:hover{
+      opacity: .7;
+      transform: scale(1.2);
+    }
+/*background image for homepage*/
+    .indexpage{
+    
+        background-color: var(--clr-accent);
+        background-image: url(../Assets/images/background.jpg);
+        background-size: fit;
+      
+      
+      
+      
+      }
+      /*background image for create page*/
+      .createpage{
+    
+        background-color: var(--clr-accent);
+        background-image: url(../Assets/images/create.png);
+        background-size: cover;
+      
+      
+      
+      
+      }
+/*background image for edit page*/
+      .editpage{
+    
+        background-color: var(--clr-accent);
+        background-image: url(../Assets/images/survey.jpeg);
+        background-size: cover;
+      
+      
+      
+      
+      }
+      /*Text box and drop down width and height*/
+      .survey{
+        width:400px; 
+        height: 40px;  
+       }
+      

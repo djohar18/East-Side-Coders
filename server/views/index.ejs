@@ -1,11 +1,11 @@
 <% include partials/header.ejs %>
 <% include partials/main_nav.ejs %>
-
+<section class="indexpage" id="index">
 <div class="container">
     <div class="offset-md-1 col-md-10">
-
+        <br>
         <!-- create a new survey -->
-        <a href="#" class="btn btn-primary btn-lg mt-2 ml-2">Create a new survey</a>
+        <a href="/create" class="btn btn-primary btn-lg mt-2 ml-2">Create a new survey</a>
 
         <!-- repeatable card -->
         <% for (let count = 0; count < surveyList.length; count++) { %>
@@ -18,12 +18,17 @@
                     <p class="card-text"> <%= surveyList[count].question %> </p>
                     <a href="/<%= surveyList[count].type %>/<%= surveyList[count]._id %>" 
                     class="btn btn-primary">Answer</a>
+                    <a href="/edit" class=" btn btn-primary">
+                                <i class="far fa-edit"></i>Edit </a>
+                               <a class=" btn btn-danger">
+                                <i class="fas fa-trash-alt"></i> Delete </a>
                 </div>
             </div>
         <% } %>
 
     </div>
 </div>
+</section>
 
 <% include partials/bottom_nav.ejs %>
 <% include partials/footer.ejs %>

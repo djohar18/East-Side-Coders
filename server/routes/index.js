@@ -15,4 +15,13 @@ router.get('/MultipleChoice/:id', indexController.displayMultipleChoicePage);
 // GET Route text answer page
 router.get('/TextAnswer/:id', indexController.displayTextAnswerPage);
 
+// Get route edit page//
+router.get('/create', function(req, res, net){
+    res.render('create', {title: 'Create'})
+})
+//edit page
+router.get('/edit', function(req, res, net){
+    res.render('edit', {title: 'Edit'})
+})
+
 module.exports = router;
