@@ -1,6 +1,6 @@
 <% include partials/header.ejs %>
 <% include partials/main_nav.ejs %>
-<section class="indexpage" id="index">
+<section class="homepage" id="home">
 <div class="container">
     <div class="offset-md-1 col-md-10">
         <br>
@@ -18,10 +18,12 @@
                     <p class="card-text"> <%= surveyList[count].question %> </p>
                     <a href="/<%= surveyList[count].type %>/<%= surveyList[count]._id %>" 
                     class="btn btn-primary">Answer</a>
-                    <a href="/edit" class=" btn btn-primary">
-                                <i class="far fa-edit"></i>Edit </a>
-                               <a class=" btn btn-danger">
-                                <i class="fas fa-trash-alt"></i> Delete </a>
+                    <a href="/edit/<%= surveyList[count]._id %>" class=" btn btn-primary">
+                        <i class="far fa-edit"></i>Edit 
+                    </a>
+                    <a class="btn btn-danger" href="/delete/<%= surveyList[count]._id %>">
+                        <i class="fas fa-trash-alt"></i> Delete 
+                    </a>
                 </div>
             </div>
         <% } %>

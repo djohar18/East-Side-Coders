@@ -28,7 +28,7 @@ body {
       transform: scale(1.2);
     }
 /*background image for homepage*/
-    .indexpage{
+    .homepage{
     
         background-color: var(--clr-accent);
         background-image: url(../Assets/images/background.jpg);

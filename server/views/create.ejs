@@ -6,77 +6,60 @@
         <div class="col-md-offset-3 col-md-8">
             <br>
             <br>
-            <h1>Create Survey</h1>
-            <form class="form" method="POST" action="/create">
-                <form action="/create">
-                    <label for="survey"><h5><strong>Choose a type of survey:</strong> </h5></label>
-                    <div>
-                    <select class="survey" name="survey" id="survey" style="width: 400px">
-                        <option>----- Select Survey Type -----</option>
-                      <option value="Agree or Disagree">Agree or Disagree</option>
-                      <option value="MCQ">Multiple Choice </option>
-                      <option value="Text">Text Question</option>
-                      </select>
-                    </div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+            <h1><%= title %></h1>
+            <form class="form" method="POST" action="/create">                
+                <label for="type"><h5><strong>Choose a type of survey:</strong> </h5></label>
+                <div>
+                    <select class="survey" name="type" id="type" style="width: 400px">
+                        <option value="Agree or Disagree">Agree or Disagree</option>
+                        <option value="MCQ">Multiple Choice </option>
+                        <option value="Text">Text Question</option>
+                    </select>
+                </div>
 
-                    <% if (typeof displayName == 'MCQ' && displayName) { %>}
+                <% if (typeof displayName == 'MCQ' && displayName) { %>}
+                <label form="question"><h5><strong>Enter The Question :</strong> </h5></label><br>
+                <input class="survey" type="text" 
+                class="form-control" 
+                id="question" 
+                placeholder="Enter The Question" 
+                name="name" 
+                    required>
+                    <br>
+                    <label form="option"><h5><strong>Enter The Option:</strong> </h5></label><br>
+                    <input class="survey" type="text" 
+                    class="form-control" 
+                    id="option" 
+                    placeholder="Enter The option" 
+                    name="name" 
+                    required>
+
+                    <input class="survey" type="text" 
+                    class="form-control" 
+                    id="option" 
+                    placeholder="Enter The Option" 
+                    name="name" 
+                    required>
+
+                    <input class="survey" type="text" 
+                    class="form-control" 
+                    id="option" 
+                    placeholder="Enter The Option" 
+                    name="name" 
+                    required>
+
+                <% } else { %>
                     <label form="question"><h5><strong>Enter The Question :</strong> </h5></label><br>
-                    <input class="survey" type="text" 
-                    class="form-control" 
-                    id="question" 
-                    placeholder="Enter The Question" 
-                    name="name" 
-                     required>
-                     <br>
-                     <label form="option"><h5><strong>Enter The Option:</strong> </h5></label><br>
-                     <input class="survey" type="text" 
-                     class="form-control" 
-                     id="option" 
-                     placeholder="Enter The option" 
-                     name="name" 
-                      required>
-
-                      <input class="survey" type="text" 
-                      class="form-control" 
-                      id="option" 
-                      placeholder="Enter The Option" 
-                      name="name" 
-                       required>
-
-                       <input class="survey" type="text" 
-                      class="form-control" 
-                      id="option" 
-                      placeholder="Enter The Option" 
-                      name="name" 
-                       required>
-
-                    <% } else { %>
-                        <label form="question"><h5><strong>Enter The Question :</strong> </h5></label><br>
-                    <input class="survey" type="text" 
-                    class="form-control" 
-                    id="question" 
-                    placeholder="Enter The Question" 
-                    name="name" 
-                     required>
-                     <br><br> <br> <br> <br> <br><br>
-                     <br><br>
-                     <br><br>
-                        <% } %>
-                    
-                 
-                    
-                  </form>
-                  <br><br>
-                     
-                <button class="btn btn-primary" type="submit" >
-                    <i class="far fa-submit"></i>Submit
-                </button>
-                <a href="/" class="btn btn-warning">
-                <i class="fas fa-undo"></i> Cancel</a>
+                    <input class="survey" type="text" class="form-control" id="question" placeholder="Enter The Question" name="question" required>
+                <% } %>
+                <div>
+                    <button class="btn btn-primary" type="submit" >
+                       <i class="far fa-submit"></i>Submit
+                    </button>                   
+                    <a href="/" class="btn btn-warning">
+                    <i class="fas fa-undo"></i> Cancel</a>
+                </div>                      
+            </form>
             </div>
         </form>
     </div>

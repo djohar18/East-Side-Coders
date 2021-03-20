@@ -19,7 +19,7 @@ mongoDB.once('open', () => {
 });
 
 // router setup
-let indexRouter = require('../routes/index');
+let homeRouter = require('../routes/home');
 let usersRouter = require('../routes/users');
 
 // app instantiation
@@ -36,7 +36,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../public')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
 
-app.use('/', indexRouter);
+app.use('/', homeRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
