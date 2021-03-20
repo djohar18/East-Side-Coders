@@ -1,1 +1,9 @@
-/* custom css goes here */
+.logoimage{
+  
+    position:inherit;
+    border-radius: 5px;
+    width: 150px;
+    margin: -15px;
+    bottom: 1px;
+    
+  }
