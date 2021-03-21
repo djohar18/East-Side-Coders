@@ -3,6 +3,7 @@ let mongoose = require('mongoose');
 // create a model class
 let surveyModel = mongoose.Schema({
     type: String,
+    active: Boolean,
     question: String,
     option1: String,
     option2: String,

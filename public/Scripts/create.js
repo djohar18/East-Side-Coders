@@ -4,25 +4,21 @@ function typeChanged(element) {
     let selected = element.value;
     let questionDiv = document.getElementById("questionDiv");
     let optionDiv = document.getElementById("optionDiv");
-    let textAnswerDiv = document.getElementById("textAnswerDiv");
+    let activeCheckbox = document.getElementById("activeCheckbox");
 
     let options = document.getElementById("options");
     let addOptionBtn = document.getElementById("addOption");
     let removeOptionBtn = document.getElementById("removeOption");
 
     // display configuration
-    if (selected === "Agree or Disagree") {
-        questionDiv.style.display = "block";
-        optionDiv.style.display = "none";
-        textAnswerDiv.style.display = "none";
-    } else if (selected === "MCQ") {
+    if (selected === "MCQ") {
+        activeCheckbox.style.display="block";
         questionDiv.style.display = "block";
         optionDiv.style.display = "block";
-        textAnswerDiv.style.display = "none";
-    } else if (selected === "Text") {
+    } else {
+        activeCheckbox.style.display = "block";
         questionDiv.style.display = "block";
         optionDiv.style.display = "none";
-        textAnswerDiv.style.display = "block";
     }
 
     // // add option

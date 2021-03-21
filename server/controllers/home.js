@@ -2,7 +2,7 @@ let Survey = require('../models/survey');
 
 // render home(survey list) page
 module.exports.displayHomePage = (req, res, next) => {
-    Survey.find((err, surveyList) => {
+    Survey.find({ active: true }, (err, surveyList) => {
         if (err) {
             return console.error(err);
         }
@@ -62,12 +62,20 @@ module.exports.displayCreatePage = (req, res, next) => {
 module.exports.processCreateRequest = (req, res, next) => {
     let newSurvey = Survey({
         "type": req.body.type,
-        "activated": req.body.activated,
         "question": req.body.question,
         "option1": req.body.option1,
         "option2": req.body.option2,
         "option3": req.body.option3
     });
+
+    if(req.body.active)
+    {
+        newSurvey["active"] = true;
+    }
+    else
+    {{
+        newSurvey["active"] = false;
+    }}
 
     Survey.create(newSurvey, (err, Survey) => {
         if (err) {
@@ -97,7 +105,6 @@ module.exports.deleteSurvey = (req, res, next) => {
 module.exports.displayEditPage = (req, res, next) => {
     let id = req.params.id;
     Survey.findById(id, (err, surveyToEdit) => {
-        console.log(surveyToEdit);
         if (err) {
             console.log(err);
             res.end(err);
@@ -115,10 +122,20 @@ module.exports.processEditRequest = (req, res, next) => {
     let editSurvey = Survey({
         "_id": id,
         "type": req.body.type,
-        "activated": req.body.activated,
         "question": req.body.question,
-        "options": req.body.options
+        "option1": req.body.option1,
+        "option2": req.body.option2,
+        "option3": req.body.option3
     });
+
+    if(req.body.active)
+    {
+        editSurvey["active"] = true;
+    }
+    else
+    {
+        editSurvey["active"] = false;
+    }
 
     Survey.updateOne({ _id: id }, editSurvey, (err) => {
         if (err) {
