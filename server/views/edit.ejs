@@ -11,8 +11,7 @@
                 <div class="col-sm-6 mb-3">
                     <label for="type">Choose a type of survey to edit:</label>
                     <select class="form-select" name="type" id="type" 
-                        onchange="typeChanged(this)">
-                        <option value="" selected disabled>Choose a type</option>
+                        onchange="typeChanged(this)" (select)="<%=Survey.type %>">
                         <option value="Agree or Disagree">Agree or Disagree</option>
                         <option value="MCQ">Multiple Choice </option>
                         <option value="Text">Text Question</option>
@@ -28,14 +27,16 @@
 
                 <!-- Options Element -->
                 <div class="col-sm-8 mb-3" id="optionDiv" style="display:none">
-                    <div id="options">
+                    <div id="options" class="mt-3">
                          <label class="form-label">Enter Options:</label>
                    
-                        <input class="survey" type="text" class="form-control" id="option"placeholder="Enter Option 1" name="options[]" value="<%= Survey.option %>" >
+                        <input class="survey mt-2" type="text" class="form-control"  placeholder="Enter Option 1" name="option1" value="<%=Survey.option1 %>">
+                        
+                       
+                        <input class="survey mt-2" type="text" class="form-control" placeholder="Enter Option 2" name="option2" value="<%=Survey.option2 %>">
 
                        
-                        <input class="survey" type="text" class="form-control" placeholder="Enter Option 2" id="option" name="options[]" value="<%= Survey.option %>" >
-                        <input class="survey" type="text" class="form-control" placeholder="Enter Option 3" id="option" name="options[]"value="<%= Survey.option %>" >
+                        <input class="survey mt-2" type="text" class="form-control" placeholder="Enter Option 3" name="option3" value="<%=Survey.option3 %>">
                     </div>
                    
                 </div>

@@ -3,9 +3,10 @@ let mongoose = require('mongoose');
 // create a model class
 let surveyModel = mongoose.Schema({
     type: String,
-    activated: Boolean,
     question: String,
-    options: [mongoose.Schema.Types.Mixed],
+    option1: String,
+    option2: String,
+    option3: String
 }, {
     collection: "surveys"
 });

@@ -64,7 +64,9 @@ module.exports.processCreateRequest = (req, res, next) => {
         "type": req.body.type,
         "activated": req.body.activated,
         "question": req.body.question,
-        "options": req.body.options
+        "option1": req.body.option1,
+        "option2": req.body.option2,
+        "option3": req.body.option3
     });
 
     Survey.create(newSurvey, (err, Survey) => {
@@ -94,8 +96,8 @@ module.exports.deleteSurvey = (req, res, next) => {
 
 module.exports.displayEditPage = (req, res, next) => {
     let id = req.params.id;
-    console.log(req);
     Survey.findById(id, (err, surveyToEdit) => {
+        console.log(surveyToEdit);
         if (err) {
             console.log(err);
             res.end(err);
@@ -109,7 +111,6 @@ module.exports.displayEditPage = (req, res, next) => {
 // process edit request
 module.exports.processEditRequest = (req, res, next) => {
     let id = req.params.id;
-    console.log(req.body.type);
 
     let editSurvey = Survey({
         "_id": id,
