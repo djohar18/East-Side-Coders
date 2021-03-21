@@ -3,8 +3,7 @@ let Survey = require('../models/survey');
 // render home(survey list) page
 module.exports.displayHomePage = (req, res, next) => {
     Survey.find((err, surveyList) => {
-        if (err) 
-        {
+        if (err) {
             return console.error(err);
         }
 
@@ -56,27 +55,25 @@ module.exports.displayTextAnswerPage = (req, res, next) => {
 
 // display create page
 module.exports.displayCreatePage = (req, res, next) => {
-    res.render('create', {title: "Create Survey"});
+    res.render('create', { title: "Create Survey" });
 }
 
 // process create request
-module.exports.processCreateRequest = (req, res, next) => {    
+module.exports.processCreateRequest = (req, res, next) => {
     let newSurvey = Survey({
         "type": req.body.type,
         "activated": req.body.activated,
         "question": req.body.question,
-        "options" : req.body.options
+        "options": req.body.options
     });
 
     Survey.create(newSurvey, (err, Survey) => {
-        if(err)
-        {
+        if (err) {
             console.log(err);
             res.end(err);
         }
-        else
-        {            
-                res.redirect('/');
+        else {
+            res.redirect('/');
         }
     });
 }
@@ -84,14 +81,12 @@ module.exports.processCreateRequest = (req, res, next) => {
 // process delete request
 module.exports.deleteSurvey = (req, res, next) => {
     let id = req.params.id;
-    Survey.remove({_id:id}, (err) => {
-        if(err)
-        {
+    Survey.remove({ _id: id }, (err) => {
+        if (err) {
             console.log(err);
             res.end(err);
         }
-        else
-        {
+        else {
             res.redirect('/');
         }
     });
@@ -101,14 +96,12 @@ module.exports.displayEditPage = (req, res, next) => {
     let id = req.params.id;
     console.log(req);
     Survey.findById(id, (err, surveyToEdit) => {
-        if(err)
-        {
+        if (err) {
             console.log(err);
             res.end(err);
         }
-        else
-        {
-            res.render('edit', {title: 'Edit', Survey: surveyToEdit});
+        else {
+            res.render('edit', { title: 'Edit', Survey: surveyToEdit });
         }
     });
 }
@@ -123,16 +116,15 @@ module.exports.processEditRequest = (req, res, next) => {
         "type": req.body.type,
         "activated": req.body.activated,
         "question": req.body.question,
-        "options" : req.body.options
+        "options": req.body.options
     });
 
-    Survey.updateOne({_id: id}, editSurvey, (err) => {
-        if(err){
+    Survey.updateOne({ _id: id }, editSurvey, (err) => {
+        if (err) {
             console.log(err);
             res.end(err);
         }
-        else
-        {
+        else {
             res.redirect('/');
         }
     });

@@ -1,5 +1,6 @@
 <% include partials/header.ejs %>
 <% include partials/main_nav.ejs %>
+
 <section class="createpage" id="create">
 <div class="container">
     <div class="row">
@@ -7,51 +8,47 @@
             <br>
             <br>
            <p> <h1><%= title %></h1></p>
+
             <form class="form" method="POST" action="/create">                
-                <label for="type"><h5><strong>Choose a type of survey:</strong> </h5></label>
-                <div>
-                    <select class="survey" name="type" id="type" style="width: 400px">
+
+                <!-- Select Element -->
+                <div class="col-sm-6 mb-3">
+                    <label for="type">Choose a type of survey:</label>
+                    <select class="form-select" name="type" id="type" style="width: 400px"
+                        onchange="typeChanged(this)">
+                        <option value="" selected disabled>Choose a type</option>
                         <option value="Agree or Disagree">Agree or Disagree</option>
                         <option value="MCQ">Multiple Choice </option>
                         <option value="Text">Text Question</option>
                     </select>
                 </div>
 
-                <p><% if (typeof displayName == 'MCQ' && displayName) { %>}
-                <label form="question"><h5><strong>Enter The Question :</strong> </h5></label></p><br>
-                <input class="survey" type="text" 
-                class="form-control" 
-                id="question" 
-                placeholder="Enter The Question" 
-                name="name" 
-                    required>
-                    <br>
-                    <label form="option"><h5><strong>Enter The Option:</strong> </h5></label><br>
-                    <input class="survey" type="text" 
-                    class="form-control" 
-                    id="option" 
-                    placeholder="Enter The option" 
-                    name="name" 
-                    required>
+                <!-- Question Element -->
+                <div class="col-sm-6 mb-3" id="questionDiv" style="display:none">
+                    <label class="form-label">Enter The Question :</label>
+                    <input class="survey" type="text" class="form-control" id="question" name="question"
+                        required>
+                </div>
 
-                    <input class="survey" type="text" 
-                    class="form-control" 
-                    id="option" 
-                    placeholder="Enter The Option" 
-                    name="name" 
-                    required>
+                <!-- Options Element -->
+                <div class="col-sm-6 mb-3" id="optionDiv" style="display:none">
+                    <label class="form-label">Enter Options :</label>
+                    <div id="options">
+                        <input class="survey" type="text" class="form-control" id="option" name="options[]">
+                    </div>
+                    <div class="controls">
+                        <a href="#" id="addOption">Add</a>
+                        <a href="#" id="removeOption">Remove</a>
+                    </div>
+                </div>
 
-                    <input class="survey" type="text" 
-                    class="form-control" 
-                    id="option" 
-                    placeholder="Enter The Option" 
-                    name="name" 
-                    required>
+                <!-- Text Answer Element -->
+                <div class="col-sm-6 mb3" id="textAnswerDiv" style="display:none">
+                    <label class="form-label">Text Answer :</label>
+                    <input class="survey" type="text" id="textAnswer" name="textAnswer"
+                        style="height:100px">
+                </div>
 
-                <% } else { %>
-                    <label form="question"><h5><strong>Enter The Question :</strong> </h5></label><br>
-                    <input class="survey" type="text" class="form-control" id="question" placeholder="Enter The Question" name="question" required>
-                <% } %>
                 <div><br>
                     <button class="btn btn-primary" type="submit" >
                        <i class="far fa-submit"></i>Submit
