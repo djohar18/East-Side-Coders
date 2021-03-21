@@ -4,51 +4,58 @@
 <div class="container">
     <div class="row">
         <div class="col-md-offset-3 col-md-8">
-            <br>
-                         <br>
+            
             <p><h1>Edit Survey</h1></p>
             <form class="form" method="POST" action="/edit/<%= Survey._id %>">
-                    <label for="type"> <h5><strong>Select a survey type to edit:</strong> </h5></label>
-                    <div>
-                    <select class="survey" name="type" id="type">
-                      <option value="Agree or Disagree">Agree or Disagree</option>
-                      <option value="MCQ">Multiple Choice </option>
-                      <option value="Text">Text Question</option>
-                      </select>
-                    </div>
-                    <div><p>
-                        <% if (typeof displayName == 'MCQ' && displayName) { %>}
-                        <label form="question"><h5><strong>Edit The Question :</strong> </h5></label></p><br>
-                        <input class="survey" type="text" class="form-control" id="question" placeholder="Enter The Question" name="name" required>
-                         <br>
-                         <label form="option"><h5><strong>Enter The Option:</strong> </h5></label><br>
-                         <input class="survey" type="text"                          class="form-control"id="option" placeholder="Enter The option" name="name" required>
+                    <!-- Select Element -->
+                <div class="col-sm-6 mb-3">
+                    <label for="type">Choose a type of survey to edit:</label>
+                    <select class="form-select" name="type" id="type" 
+                        onchange="typeChanged(this)">
+                        <option value="" selected disabled>Choose a type</option>
+                        <option value="Agree or Disagree">Agree or Disagree</option>
+                        <option value="MCQ">Multiple Choice </option>
+                        <option value="Text">Text Question</option>
+                    </select>
+                </div>
 
-                          <input class="survey" type="text" class="form-control" id="option" placeholder="Enter The Option" name="name" required>
+                      <!-- Question Element -->
+                <div class="col-sm-6 mb-3" id="questionDiv" style="display:none">
+                    <label class="form-label">Enter The Question :</label>
+                    <input class="survey" type="text" class="form-control" id="question" placeholder="Enter The Question" name="question"
+                    value="<%= Survey.question %>" required>
+                </div>
 
-                           <input class="survey" type="text" class="form-control" id="option" placeholder="Enter The Option" name="name" required>
+                <!-- Options Element -->
+                <div class="col-sm-8 mb-3" id="optionDiv" style="display:none">
+                    <div id="options">
+                         <label class="form-label">Enter Options:</label>
+                   
+                        <input class="survey" type="text" class="form-control" id="option"placeholder="Enter Option 1" name="options[]" value="<%= Survey.option %>" >
 
-                        <% } else { %>
-                            <label form="question"><h5><strong>Edit The Question :</strong> </h5></label><br>
-                        <input class="survey" type="text" class="form-control" id="question" placeholder="Enter The Question" name="question" value="<%= Survey.question %>" required>
-                        <% } %>
-                        
-                         
+                       
+                        <input class="survey" type="text" class="form-control" placeholder="Enter Option 2" id="option" name="options[]" value="<%= Survey.option %>" >
+                        <input class="survey" type="text" class="form-control" placeholder="Enter Option 3" id="option" name="options[]"value="<%= Survey.option %>" >
                     </div>
-                    <div><br>
-                        <button class="btn btn-primary" type="submit" >
-                            <i class="far fa-submit"></i>Submit
-                        </button>
-                        <a href="/" class="btn btn-warning">
-                        <i class="fas fa-undo"></i> Cancel
-                        </a>
-                    </div>
-                  </form>
+                   
+                </div>
+
                 
+
+                 <br>
+                 <div class= button>
+                    <button class="btn btn-primary" type="submit" >
+                       <i class="far fa-submit"></i>Submit
+                    </button>                   
+                    <a href="/" class="btn btn-warning">
+                    <i class="fas fa-undo"></i> Cancel</a>
+                </div>             
+               </form>
             </div>
         </form>
     </div>
 </div>
+
 </div>
 </section>
 

@@ -5,8 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-offset-3 col-md-8">
-            <br>
-            <br>
+            
            <p> <h1><%= title %></h1></p>
 
             <form class="form" method="POST" action="/create">                
@@ -14,7 +13,7 @@
                 <!-- Select Element -->
                 <div class="col-sm-6 mb-3">
                     <label for="type">Choose a type of survey:</label>
-                    <select class="form-select" name="type" id="type" style="width: 400px"
+                    <select class="form-select" name="type" id="type" 
                         onchange="typeChanged(this)">
                         <option value="" selected disabled>Choose a type</option>
                         <option value="Agree or Disagree">Agree or Disagree</option>
@@ -26,41 +25,42 @@
                 <!-- Question Element -->
                 <div class="col-sm-6 mb-3" id="questionDiv" style="display:none">
                     <label class="form-label">Enter The Question :</label>
-                    <input class="survey" type="text" class="form-control" id="question" name="question"
+                    <input class="survey" type="text" class="form-control" id="question" placeholder="Enter The Question" name="question"
                         required>
                 </div>
 
                 <!-- Options Element -->
-                <div class="col-sm-6 mb-3" id="optionDiv" style="display:none">
-                    <label class="form-label">Enter Options :</label>
+                <div class="col-sm-8 mb-3" id="optionDiv" style="display:none">
                     <div id="options">
-                        <input class="survey" type="text" class="form-control" id="option" name="options[]">
+                         <label class="form-label">Enter Options:</label>
+                   
+                        <input class="survey" type="text" class="form-control" id="option"placeholder="Enter Option 1" name="options[]">
+                        
+                       
+                        <input class="survey" type="text" class="form-control" placeholder="Enter Option 2" id="option" name="options[]">
+
+                       
+                        <input class="survey" type="text" class="form-control" placeholder="Enter Option 3" id="option" name="options[]">
                     </div>
-                    <div class="controls">
-                        <a href="#" id="addOption">Add</a>
-                        <a href="#" id="removeOption">Remove</a>
-                    </div>
+                   
                 </div>
 
-                <!-- Text Answer Element -->
-                <div class="col-sm-6 mb3" id="textAnswerDiv" style="display:none">
-                    <label class="form-label">Text Answer :</label>
-                    <input class="survey" type="text" id="textAnswer" name="textAnswer"
-                        style="height:100px">
-                </div>
+                
 
-                <div><br>
+                 <br>
+                 <div class= button>
                     <button class="btn btn-primary" type="submit" >
                        <i class="far fa-submit"></i>Submit
                     </button>                   
                     <a href="/" class="btn btn-warning">
                     <i class="fas fa-undo"></i> Cancel</a>
-                </div>                      
-            </form>
+                </div>             
+               </form>
             </div>
         </form>
     </div>
 </div>
+
 </div>
 </section>
 
