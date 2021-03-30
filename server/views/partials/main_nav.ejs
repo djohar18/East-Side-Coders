@@ -8,6 +8,19 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarScroll">
         <ul class="navbar-nav ml-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+  <!--Home Page-->
+        <a class="nav-link active" aria-current="page" href="/"><i class="fas fa-lg fa-home"></i> Home</a>
+          
+        
+                  <!--Login page-->
+<% if (typeof displayName == 'string' && displayName) { %>
+  <li class="navbar-text"><i class="fas fa-lg fa-user"></i> Welcome, <%=displayName %></li>
+  <li class="nav-item active"><a href="/users/logout" class="nav-link">
+  <i class="fas fa-lg fa-sign-out-alt"></i> Logout</a></li>
+  <% } else { %>
+  <li class="nav-item active"><a href="/users/login" class="nav-link">
+  <i class="fas fa-lg fa-sign-in-alt"></i> Login</a> </li>
+  <% } %>
 
         </ul>
       </div>
