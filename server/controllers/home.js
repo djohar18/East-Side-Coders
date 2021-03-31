@@ -72,7 +72,7 @@ module.exports.displayCreatePage = (req, res, next) => {
 module.exports.processCreateRequest = (req, res, next) => {
     let options = [];
 
-    if (req.body.type == "MCQ") {
+    if (req.body.type == "Multiple Choice") {
         let option1 = {
             option: req.body.option1,
             voted: 0
@@ -144,6 +144,7 @@ module.exports.deleteSurvey = (req, res, next) => {
     });
 }
 
+// display edit page
 module.exports.displayEditPage = (req, res, next) => {
     let id = req.params.id;
     Survey.findById(id, (err, surveyToEdit) => {
