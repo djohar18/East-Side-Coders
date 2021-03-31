@@ -1,0 +1,26 @@
+<% include partials/header.ejs %>
+<% include partials/main_nav.ejs %>
+<section class="homepage" id="home">
+<div class="container">
+    <div class="offset-md-1 col-md-10">
+        <h1 class="section-heading"><%= title %></h1>
+
+        <form class="form" method="POST" action="/answer/<%= survey._id %>">
+            <% for (let option=0; option < survey.options; option++) { %>
+                <div class="form-check">
+                <input class="form-check-input" type="radio" name="answers" id="exampleRadios1" value="option1">
+                <label class="form-check-label" for="exampleRadios1">
+                    Default radio
+                </label>
+            <% } %>
+        </form>
+
+</div>
+        
+    </div>
+</div>
+</section>
+
+<% include partials/bottom_nav.ejs %>
+<% include partials/footer.ejs %>
+
