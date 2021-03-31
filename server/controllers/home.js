@@ -43,7 +43,7 @@ module.exports.processAnswerRequest = (req, res, next) => {
                     res.end(err);
                 }
                 else {
-                    res.redirect('/');
+                    res.redirect('/results/' + id);
                 }
             });
     } else if (req.body.text) {
@@ -57,7 +57,7 @@ module.exports.processAnswerRequest = (req, res, next) => {
                     res.end(err);
                 }
                 else {
-                    res.redirect('/');
+                    res.redirect('/results/' + id);
                 }
             });
     }
@@ -187,3 +187,20 @@ module.exports.processEditRequest = (req, res, next) => {
         }
     });
 }
+
+// render results page
+module.exports.displayResultsPage = (req, res, next) => {
+    let id = req.params.id;
+
+    Survey.findById(id, (err, survey) => {
+        if (err) {
+            console.log(err);
+            res.end(err);
+        } else {
+            res.render('results', {
+                title: 'Results',
+                survey: survey
+            });
+        }
+    })
+};

@@ -1,0 +1,29 @@
+<% include partials/header.ejs %>
+<% include partials/main_nav.ejs %>
+<section class="homepage" id="home">
+    <div class="container">
+        <div class="offset-md-1 col-md-10">
+            <h1 class="section-heading"><%= title %></h1>
+
+            <% if (survey.type != "Short Answer") { %>
+
+                <!-- Results form for MCQ and Agree/Disagree type -->
+                <% for (let count=0; count < survey.options.length; count++) { %>
+                    <p><%= survey.options[count].option %> : <%= survey.options[count].voted %></p>
+                <% } %>
+            <% } else { %>
+
+                <!-- Short Answer form for short answer type -->
+                <% for (let count=0; count < survey.options.length; count++) { %>
+                    <p><%=count+1%>. <%= survey.options[count] %></p>
+                <% } %>
+            <% } %> 
+
+            <a class="btn btn-primary" href="/" role="button">Back to List</a>
+        </div>
+    </div>
+</section>
+
+<% include partials/bottom_nav.ejs %>
+<% include partials/footer.ejs %>
+

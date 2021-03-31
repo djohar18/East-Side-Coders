@@ -6,7 +6,7 @@
             <h1 class="section-heading"><%= survey.question %></h1>
 
             <form class="form" method="POST" action="/answer/<%= survey._id %>">
-                <% if (survey.type != "Text") { %>
+                <% if (survey.type != "Short Answer") { %>
 
                     <!-- Options form for MCQ and Agree/Disagree type -->
                     <% for (let count=0; count < survey.options.length; count++) { %>

@@ -11,8 +11,8 @@ function typeChanged(element) {
     let removeOptionBtn = document.getElementById("removeOption");
 
     // display configuration
-    if (selected === "MCQ") {
-        activeCheckbox.style.display="block";
+    if (selected === "Multiple Choice") {
+        activeCheckbox.style.display = "block";
         questionDiv.style.display = "block";
         optionDiv.style.display = "block";
     } else {

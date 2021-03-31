@@ -6,11 +6,14 @@ let homeController = require('../controllers/home');
 // GET Route survey page
 router.get('/', homeController.displayHomePage);
 
-// GET Route agree disagree page
+// GET Route answer page
 router.get('/answer/:id', homeController.displayAnswerPage);
 
-// process answer page
+// process answer request
 router.post('/answer/:id', homeController.processAnswerRequest);
+
+// GET Route results page
+router.get('/results/:id', homeController.displayResultsPage);
 
 // Get route create page//
 router.get('/create', homeController.displayCreatePage);
