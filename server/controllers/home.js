@@ -73,24 +73,13 @@ module.exports.processCreateRequest = (req, res, next) => {
     let options = [];
 
     if (req.body.type == "Multiple Choice") {
-        let option1 = {
-            option: req.body.option1,
-            voted: 0
-        }
-        options.push(option1);
-
-        let option2 = {
-            option: req.body.option2,
-            voted: 0
-        }
-        options.push(option2);
-
-        let option3 = {
-            option: req.body.option3,
-            voted: 0
-        }
-        options.push(option3);
-
+        req.body.options.forEach(option => {
+            let newOption = {
+                option: option,
+                voted: 0
+            };
+            options.push(newOption);
+        })
     } else if (req.body.type == "Agree or Disagree") {
         let agreeOption = {
             option: "Agree",

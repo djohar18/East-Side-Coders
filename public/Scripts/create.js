@@ -21,21 +21,22 @@ function typeChanged(element) {
         optionDiv.style.display = "none";
     }
 
-    // // add option
-    // addOptionBtn.onclick = function () {
-    //     let newOption = document.createElement("input");
-    //     newOption.setAttribute("type", "text");
-    //     newOption.setAttribute("name", "options[]");
-    //     newOption.setAttribute("class", "survey");
-    //     options.appendChild(newOption);
-    // }
+    // add option
+    addOptionBtn.onclick = function () {
+        let newOption = document.createElement("input");
+        newOption.setAttribute("type", "text");
+        newOption.setAttribute("name", "options");
+        newOption.setAttribute("class", "survey mt-2");
+        newOption.setAttribute("placeholder", "Enter Option");
+        options.appendChild(newOption);
+    }
 
-    // // remove option
-    // removeOptionBtn.onclick = function () {
-    //     let inputChildren = options.getElementsByTagName('input');
-    //     if (inputChildren.length >= 2) {
-    //         options.removeChild(inputChildren[inputChildren.length - 1]);
-    //     }
-    // }
+    // remove option
+    removeOptionBtn.onclick = function () {
+        let inputChildren = options.getElementsByTagName('input');
+        if (inputChildren.length >= 2) {
+            options.removeChild(inputChildren[inputChildren.length - 1]);
+        }
+    }
 
 }
