@@ -5,9 +5,7 @@ let surveyModel = mongoose.Schema({
     type: String,
     active: Boolean,
     question: String,
-    option1: String,
-    option2: String,
-    option3: String
+    options: [mongoose.Schema.Types.Mixed],
 }, {
     collection: "surveys"
 });

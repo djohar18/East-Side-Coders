@@ -6,14 +6,11 @@ let homeController = require('../controllers/home');
 // GET Route survey page
 router.get('/', homeController.displayHomePage);
 
-// // GET Route agree disagree page
-// router.get('/AgreeDisagree/:id', homeController.displayAgreeDisagreePage);
+// GET Route agree disagree page
+router.get('/answer/:id', homeController.displayAnswerPage);
 
-// // GET Route multiple choice page
-// router.get('/MultipleChoice/:id', homeController.displayMultipleChoicePage);
-
-// // GET Route text answer page
-// router.get('/TextAnswer/:id', homeController.displayTextAnswerPage);
+// process answer page
+router.post('/answer/:id', homeController.processAnswerRequest);
 
 // Get route create page//
 router.get('/create', homeController.displayCreatePage);
@@ -31,9 +28,9 @@ router.post('/edit/:id', homeController.processEditRequest)
 router.get('/delete/:id', homeController.deleteSurvey);
 
 /* Get Login page*/
-router.get('/login', function(req, res, next) {
-    res.render('login', { title: 'Login' });
-  });
+router.get('/login', function (req, res, next) {
+  res.render('login', { title: 'Login' });
+});
 
 
 module.exports = router;
