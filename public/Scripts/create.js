@@ -6,9 +6,6 @@ function typeChanged(element) {
     let optionDiv = document.getElementById("optionDiv");
     let activeCheckbox = document.getElementById("activeCheckbox");
 
-    let options = document.getElementById("options");
-    let addOptionBtn = document.getElementById("addOption");
-    let removeOptionBtn = document.getElementById("removeOption");
 
     // display configuration
     if (selected === "Multiple Choice") {
@@ -20,6 +17,12 @@ function typeChanged(element) {
         questionDiv.style.display = "block";
         optionDiv.style.display = "none";
     }
+}
+
+(function () {
+    let options = document.getElementById("options");
+    let addOptionBtn = document.getElementById("addOption");
+    let removeOptionBtn = document.getElementById("removeOption");
 
     // add option
     addOptionBtn.onclick = function () {
@@ -38,5 +41,5 @@ function typeChanged(element) {
             options.removeChild(inputChildren[inputChildren.length - 1]);
         }
     }
+})();
 
-}

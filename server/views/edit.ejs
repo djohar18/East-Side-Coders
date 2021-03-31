@@ -7,51 +7,47 @@
             
             <p><h1>Edit Survey</h1></p>
             <form class="form" method="POST" action="/edit/<%= Survey._id %>">
-                    <!-- Select Element -->
+
+                <!-- Select Element -->
                 <div class="col-sm-6 mb-3">
                     <label for="type">Choose a type of survey to edit:</label>
                     <select class="form-select" name="type" id="type" 
                         onchange="typeChanged(this)" required>
-                        <option selected disabled>Choose a type</option>
-                        <option value="Agree or Disagree">Agree or Disagree</option>
-                        <option value="Multiple Choice">Multiple Choice </option>
-                        <option value="Short Answer">Text Question</option>
+                        <% const types=['Agree or Disagree', 'Multiple Choice', 'Short Answer']; %>
+                        <% for (let count = 0; count < types.length; count++){ %>
+                        <% let selected = (Survey.type == types[count]) ? 'Selected' : ''; %>   
+                        <option value='<%= types[count] %>' <%= selected %>> <%=types[count]%> </option>
+                        <% } %>
                     </select>
                 </div>
 
-                <div  class="col-sm-6 mb-3" id="activeCheckbox" style="display:none">
-                    <label class="form-label" for="active" value="true">Active</label>
+                <!-- Active / Inactive Element -->
+                <div  class="col-sm-6 mb-3" id="activeCheckbox" style="display">
+                    <label class="form-label" for="active" value="<%=Survey.active%>">Active</label>
                     <input type="checkbox" id="active" name="active" checked="checked">
                 </div>
 
-
-                      <!-- Question Element -->
-                <div class="col-sm-6 mb-3" id="questionDiv" style="display:none">
+                <!-- Question Element -->
+                <div class="col-sm-6 mb-3" id="questionDiv" style="display">
                     <label class="form-label">Enter The Question :</label>
                     <input class="survey" type="text" class="form-control" id="question" placeholder="Enter The Question" name="question"
                     value="<%= Survey.question %>" required>
                 </div>
 
                 <!-- Options Element -->
-                <div class="col-sm-8 mb-3" id="optionDiv" style="display:none">
-                    <div id="options" class="mt-3">
-                         <label class="form-label">Enter Options:</label>
-                   
-                        <input class="survey mt-2" type="text" class="form-control"  placeholder="Enter Option 1" name="option1" value="<%=Survey.option1 %>">
-                        
-                       
-                        <input class="survey mt-2" type="text" class="form-control" placeholder="Enter Option 2" name="option2" value="<%=Survey.option2 %>">
-
-                       
-                        <input class="survey mt-2" type="text" class="form-control" placeholder="Enter Option 3" name="option3" value="<%=Survey.option3 %>">
+                <% let display = (Survey.type == 'Multiple Choice') ? '': ':none';%>
+                <div class="col-sm-8 mb-3" id="optionDiv" style="display<%=display%>">
+                    <label class="form-label">Enter Options:</label>
+                    <a href="#" id="addOption"><button type="button" class="btn btn-primary btn-sm">+</button></a>
+                    <a href="#" id="removeOption"><button type="button" class="btn btn-warning btn-sm">-</button></a>
+                    <div id="options">
+                        <% Survey.options.forEach( option => {%>
+                        <input class="survey mt-2" type="text" value="<%= option.option %>" name="options" >
+                        <% }); %>
                     </div>
-                   
                 </div>
 
-                
-
-                 <br>
-                 <div class= button>
+                <div class= button>
                     <button class="btn btn-primary" type="submit" >
                        <i class="far fa-submit"></i>Submit
                     </button>                   
@@ -66,6 +62,8 @@
 
 </div>
 </section>
+
+<script src="/Scripts/create.js"></script>
 
 <% include partials/bottom_nav.ejs %>
 <% include partials/footer.ejs %>

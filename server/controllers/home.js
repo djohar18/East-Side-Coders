@@ -150,14 +150,34 @@ module.exports.displayEditPage = (req, res, next) => {
 // process edit request
 module.exports.processEditRequest = (req, res, next) => {
     let id = req.params.id;
+    let options = [];
+
+    if (req.body.type == "Multiple Choice") {
+        req.body.options.forEach(option => {
+            let newOption = {
+                option: option,
+                voted: 0
+            };
+            options.push(newOption);
+        })
+    } else if (req.body.type == "Agree or Disagree") {
+        let agreeOption = {
+            option: "Agree",
+            voted: 0
+        }
+        let disagreeOption = {
+            option: "Disagree",
+            voted: 0
+        }
+        options.push(agreeOption);
+        options.push(disagreeOption);
+    }
 
     let editSurvey = Survey({
         "_id": id,
         "type": req.body.type,
         "question": req.body.question,
-        "option1": req.body.option1,
-        "option2": req.body.option2,
-        "option3": req.body.option3
+        "options": options
     });
 
     if (req.body.active) {
