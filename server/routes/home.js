@@ -6,14 +6,14 @@ let homeController = require('../controllers/home');
 // GET Route survey page
 router.get('/', homeController.displayHomePage);
 
-// // GET Route agree disagree page
-// router.get('/AgreeDisagree/:id', homeController.displayAgreeDisagreePage);
+// GET Route answer page
+router.get('/answer/:id', homeController.displayAnswerPage);
 
-// // GET Route multiple choice page
-// router.get('/MultipleChoice/:id', homeController.displayMultipleChoicePage);
+// process answer request
+router.post('/answer/:id', homeController.processAnswerRequest);
 
-// // GET Route text answer page
-// router.get('/TextAnswer/:id', homeController.displayTextAnswerPage);
+// GET Route results page
+router.get('/results/:id', homeController.displayResultsPage);
 
 // Get route create page//
 router.get('/create', homeController.displayCreatePage);
@@ -29,5 +29,34 @@ router.post('/edit/:id', homeController.processEditRequest)
 
 //delete survey
 router.get('/delete/:id', homeController.deleteSurvey);
+
+/* Get Login page*/
+router.get('/login', function (req, res, next) {
+  res.render('login', { title: 'Login' });
+});
+
+/*Adding Login page  */
+router.get("/login", homeController.displayLoginPage);
+
+/*Post for login page  */
+router.post("/login", homeController.processLoginPage);
+
+/* Get Login page*/
+router.get('/register', function (req, res, next) {
+  res.render('register', { title: 'Register' });
+});
+
+/*Adding Register page  */
+router.get("/register", homeController.displayRegisterPage);
+
+/*Post for register page  */
+router.post("/register", homeController.processRegisterPage);
+
+/*To perform logout*/
+
+router.get("/logout", homeController.performLogout);
+
+module.exports = router;
+
 
 module.exports = router;

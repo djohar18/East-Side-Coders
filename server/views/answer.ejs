@@ -1,0 +1,41 @@
+<% include partials/header.ejs %>
+<% include partials/main_nav.ejs %>
+<section class="homepage" id="home">
+    <div class="container">
+        <div class="offset-md-1 col-md-10">
+            <h1 class="section-heading"><%= survey.question %></h1>
+
+            <form class="form" method="POST" action="/answer/<%= survey._id %>">
+                <% if (survey.type != "Short Answer") { %>
+
+                    <!-- Options form for MCQ and Agree/Disagree type -->
+                    <% for (let count=0; count < survey.options.length; count++) { %>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="answer" id="answer" value="<%= survey.options[count].option %>">
+                            <label class="form-check-label" for="answer">
+                                <%= survey.options[count].option %>
+                            </label>
+                        </div>
+                    <% } %>
+                <% } else { %>
+
+                    <!-- Short Answer form for short answer type -->
+                    <div class="col-12 mb-3">
+                        <textarea id="message" class="form-control" name="text" placeholder="Leave a short answer"
+                            style="height:100px"></textarea>
+                    </div>
+                <% } %> 
+
+                <!-- Submit button -->
+                <button class="btn btn-primary mt-2" type="submit">
+                    <i class="far fa-submit"></i>Submit
+                </button>
+                
+            </form>
+        </div>
+    </div>
+</section>
+
+<% include partials/bottom_nav.ejs %>
+<% include partials/footer.ejs %>
+
