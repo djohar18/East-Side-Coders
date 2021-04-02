@@ -4,6 +4,10 @@ let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
+let passport = require('passport');
+
+//passport config
+require("../config/passport")(passport);
 
 // databse setup
 let mongoose = require('mongoose');
@@ -18,9 +22,12 @@ mongoDB.once('open', () => {
   console.log('Connected to MongoDB...');
 });
 
+
+
 // router setup
 let homeRouter = require('../routes/home');
 let usersRouter = require('../routes/users');
+let authRouter = require('../config/authentication');
 
 // app instantiation
 let app = express();
@@ -28,7 +35,15 @@ let app = express();
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
+//initializepassport
+app.use(passport.initialize());
+app.use(passport.session());
 
+//check authentication
+app.use(function (req, res, next) {
+  res.locals.isAuthenticated = req.isAuthenticated();
+  next();
+});
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

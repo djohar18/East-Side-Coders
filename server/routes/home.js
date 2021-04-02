@@ -30,10 +30,4 @@ router.post('/edit/:id', homeController.processEditRequest)
 //delete survey
 router.get('/delete/:id', homeController.deleteSurvey);
 
-/* Get Login page*/
-router.get('/login', function (req, res, next) {
-  res.render('login', { title: 'Login' });
-});
-
-
 module.exports = router;
