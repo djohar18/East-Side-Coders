@@ -15,10 +15,11 @@ module.exports.displayLoginPage = (req, res, next) => {
 }   
 
 module.exports.processLoginPage = (req, res, next) => {
+    
     passport.authenticate("local", {
         successRedirect: "/",
-        failureRedirect: "/users/login",
-        // failureFlash: true,
+        failureRedirect: "/users/login", 
+        failureFlash: true,
       })(req, res, next);
 }
 
@@ -30,7 +31,8 @@ module.exports.displayRegisterPage = (req, res, next) => {
         {
             title: 'Register',
             // messages: req.flash('registerMessage'),
-            displayName: req.User ? req.User.displayName : ''
+            displayName: req.User ? req.User.displayName : '',
+            errorMessage : '',
         });
     }
     else
@@ -47,46 +49,45 @@ module.exports.processRegisterPage = (req, res, next) => {
         email: req.body.email,
         displayName: req.body.displayName
     });
-
-    User.create(newUser, req.body.password, (err) => {
-        if(err)
+    console.log(User.exists({username: newUser.username}));
+    User.findOne({username: newUser.username}, function(err, userExists){
+        if(err) {
+          console.log(err);
+        }
+        if(!userExists)
         {
-            console.log(err);
-            console.log("Error: Inserting New User");
-            if(err.name == "UserExistsError")
-            {
-                // req.flash(
-                //     'registerMessage',
-                //     'Registration Error: User Already Exists!'
-                // );
-                console.log('Error: User Already Exists!')
-            }
-            (res.body)
-            return res.render('auth/register',
-            {
-                title: 'Register',
-                // messages: req.flash('registerMessage'),
-                displayName: req.User ? req.User.displayName : ''
+            User.create(newUser, (err) => {
+                if(err)
+                {
+                    console.log(err);
+                    console.log("Error: Inserting New User");
+                    res.render('auth/register', {errorMessage : "Error: Inserting New User"});
+                }
+                else
+                {
+                    // if no error exists, then registration is successful
+
+                    // redirect the user and authenticate them
+
+                    /* TODO - Getting Ready to convert to API
+                    res.json({success: true, msg: 'User Registered Successfully!'});
+                    */
+
+                    return passport.authenticate('local')(req, res, () => {
+                        res.redirect('/users/login');
+                    });
+                }
             });
         }
-        else
-        {
-            // if no error exists, then registration is successful
-
-            // redirect the user and authenticate them
-
-            /* TODO - Getting Ready to convert to API
-            res.json({success: true, msg: 'User Registered Successfully!'});
-            */
-
-            return passport.authenticate('local')(req, res, () => {
-                res.redirect('/users/login');
-            });
+        else{        
+            console.log("user exists...");
+            res.render('auth/register', {errorMessage : "username already exists.."});
         }
     });
 }
 
 module.exports.performLogout = (req, res, next) => {
     req.logout();
-    res.redirect('/');
+  req.session.destroy();
+  res.redirect("/");
 }

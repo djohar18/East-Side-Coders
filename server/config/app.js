@@ -5,9 +5,14 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let passport = require('passport');
+let session = require('express-session');
+let flash = require('express-flash');
 
 //passport config
 require("../config/passport")(passport);
+
+// app instantiation
+let app = express();
 
 // databse setup
 let mongoose = require('mongoose');
@@ -23,18 +28,17 @@ mongoDB.once('open', () => {
 });
 
 
+app.use(flash());
 
-// router setup
-let homeRouter = require('../routes/home');
-let usersRouter = require('../routes/users');
-let authRouter = require('../config/authentication');
+// Express session
+app.use(session({
+  secret: "secret",
+  resave: true,
+  saveUinitialized: true,
+})
+);
 
-// app instantiation
-let app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, '../views'));
-app.set('view engine', 'ejs');
 //initializepassport
 app.use(passport.initialize());
 app.use(passport.session());
@@ -44,12 +48,22 @@ app.use(function (req, res, next) {
   res.locals.isAuthenticated = req.isAuthenticated();
   next();
 });
+
+// view engine setup
+app.set('views', path.join(__dirname, '../views'));
+app.set('view engine', 'ejs');
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../public')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
+
+// router setup
+let homeRouter = require('../routes/home');
+let usersRouter = require('../routes/users');
+let authRouter = require('../config/authentication');
 
 app.use('/', homeRouter);
 app.use('/users', usersRouter);

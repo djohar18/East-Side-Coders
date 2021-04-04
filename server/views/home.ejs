@@ -16,14 +16,15 @@
                 <div class="card-body">
                     <h5 class="card-title"> <%= surveyList[count].type %> </h5>
                     <p class="card-text"> <%= surveyList[count].question %> </p>
-                    <a href="/answer/<%= surveyList[count]._id %>" 
-                    class="btn btn-primary">Answer</a>
-                    <a href="/edit/<%= surveyList[count]._id %>" class=" btn btn-primary">
-                        <i class="far fa-edit"></i>Edit 
-                    </a>
-                    <a class="btn btn-danger" href="/delete/<%= surveyList[count]._id %>">
-                        <i class="fas fa-trash-alt"></i> Delete 
-                    </a>
+                    <a href="/answer/<%= surveyList[count]._id %>" class="btn btn-primary">Answer</a>
+                    <% if(isAuthenticated){%>
+                        <a href="/edit/<%= surveyList[count]._id %>" class=" btn btn-primary">
+                            <i class="far fa-edit"></i>Edit 
+                        </a>
+                        <a class="btn btn-danger" href="/delete/<%= surveyList[count]._id %>">
+                            <i class="fas fa-trash-alt"></i> Delete 
+                        </a>
+                    <%}%>
                 </div>
             </div>
         <% } %>

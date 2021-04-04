@@ -8,10 +8,10 @@ router.get('/login', usersController.displayLoginPage);
 
 router.post('/login', usersController.processLoginPage);
 
-router.get('/register', checkAuthentication, (req, res, next)=> {
-  res.render('auth/register');
-});
+router.get('/register', usersController.displayRegisterPage);
 
 router.post('/register', usersController.processRegisterPage);
+
+router.get('/logout', usersController.performLogout);
 
 module.exports = router;

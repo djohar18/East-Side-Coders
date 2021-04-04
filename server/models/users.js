@@ -3,7 +3,7 @@
 let mongoose = require('mongoose');
 let passportLocalMongoose = require('passport-local-mongoose');
 
-let userModel = mongoose.Schema({
+let userModel = new mongoose.Schema({
     username: {
         type: String,
         trim: true,
@@ -11,7 +11,6 @@ let userModel = mongoose.Schema({
     },
     password: {
         type: String,
-        default: '',
         trim: true,
         required: 'password is required'
     },

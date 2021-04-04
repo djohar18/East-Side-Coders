@@ -15,7 +15,6 @@ module.exports = function (passport) {
           username: username,
         }).then((User) => {
           if (!User) {
-            console.log('not user..');
             return done(null, false, {
               message: "That username or password is incorrect",
             });
