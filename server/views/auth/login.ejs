@@ -1,0 +1,48 @@
+<% include ../partials/header.ejs%>
+<% include ../partials/main_nav.ejs%>
+<main class="loginpage">
+    <!--Message Area-->
+    <% if(messages.error){ %>
+        <div class="alert alert-danger" role="alert">
+            <%= messages.error %>
+        </div>
+    <%}%>   
+    
+   <div class="container">
+    <div class="col-md-offset-3 col-md-4">
+       <p> <h1 class="section__title section__title--contact"> <strong> Login </strong></h1></p>
+                    <form  method="POST" autocomplete="off">
+                        <fieldset class="form-group">
+                       
+                            <input type="username" class="form-control mt-3" 
+                            name="username" 
+                            placeholder="Enter username"
+                             id="username" 
+                             required autofocus>
+                       
+                          </fieldset>
+                          <fieldset class="form-group">
+                       
+                            <input type="password" class="form-control" 
+                            name="password" 
+                            placeholder="Enter password"
+                             id="password" 
+                             required>
+                         </fieldset>
+                         <fieldset class="form-group text-right">
+                        <input type="submit" class="btn btn-success" value="Login">
+                        <a href="/" class="btn btn-warning"> Cancel</a>
+                        </fieldset>
+                        <br>
+                        or <a href="\users\register"> Register Here</a>
+
+                       
+
+                    </form>
+                </div>
+            </div>
+        </main>
+        <% include ../partials/bottom_nav.ejs%>
+        
+
+        <% include ../partials/footer.ejs%>

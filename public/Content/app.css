@@ -26,6 +26,7 @@ body {
    --fs-h2: 3.75rem;
    --fs-h3: 1.5rem;
    --fs-body: 1.125rem;
+   
   }
 }
   /* hovering the nav links and the logo*/
@@ -63,6 +64,31 @@ body {
     
         background-color: var(--clr-accent);
         background-image: url(../Assets/images/edit.png);
+        height: 580px;
+        background-position: center;
+        background-repeat: repeat;
+        background-size: cover;
+      
+      
+      
+      
+      }
+      /*background image for result page*/
+      .resultpage{
+        background-color: var(--clr-accent);
+        background-image: url(../Assets/images/result.png);
+        height: 525px;
+        background-position: center;
+        background-repeat: repeat;
+        background-size: cover;
+      
+
+      }
+      /*background for answer page*/
+      .answerpage{
+    
+        background-color: var(--clr-accent);
+        background-image: url(../Assets/images/answer.png);
         height: 525px;
         background-position: center;
         background-repeat: repeat;
@@ -72,17 +98,76 @@ body {
       
       
       }
+      /*setting the radio button dimension*/
+      .form-check-input{
+        width: 0.7em; height: 0.7em;
+      }
+      /*background image for register page*/
+    .registerpage{
+      background-color: var(--clr-accent);
+      background-image: url(../Assets/images/register.png);
+      height: 525px;
+      background-position: center;
+      background-repeat: repeat;
+      background-size: cover;
+    
+
+    }
+   /*background image for login page*/
+    .loginpage{
+      
+        background-color: var(--clr-accent);
+        background-image: url(../Assets/images/login.png);
+        height: 525px;
+        background-position: center;
+        background-repeat: repeat;
+        background-size: cover;
+      
+  
+      
+    }
       /*Text box and drop down width and height*/
       .survey{
         width:400px; 
         height: 40px;  
         
        }
+
       .form-select{
         width:400px; 
         height: 40px;
       }
-
+      /*position of button */
       .button{
         padding: 1rem
+      }
+      /* setting the font and colour for all page title*/
+      .section-heading-answer{
+        font-family: "Times New Roman";
+      }
+      
+      .section-heading-result{
+        font-family: "Times New Roman";
+        color:rgb(27, 29, 28)
+      }
+      
+      .card-title{
+        font-family: "Times New Roman";
+        
+      }
+      .section__title--contact{
+        font-family: "Times New Roman";
+        color:blue
+      }
+      .register-title{
+        font-family: "Times New Roman";
+        color:rgb(62, 32, 167)
+      }
+      .create-title{
+        font-family: "Times New Roman";
+        color:rgb(6, 6, 94)
+      }
+      .edit-title{
+        font-family: "Times New Roman";
+        color:rgb(6, 6, 94)
       }

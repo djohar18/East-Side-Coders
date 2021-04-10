@@ -2,32 +2,33 @@ let express = require('express');
 let router = express.Router();
 let Survey = require('../models/survey');
 let homeController = require('../controllers/home');
+let { checkAuthentication } = require("../config/authentication");
 
 // GET Route survey page
 router.get('/', homeController.displayHomePage);
 
-// // GET Route agree disagree page
-// router.get('/AgreeDisagree/:id', homeController.displayAgreeDisagreePage);
+// GET Route answer page
+router.get('/answer/:id', homeController.displayAnswerPage);
 
-// // GET Route multiple choice page
-// router.get('/MultipleChoice/:id', homeController.displayMultipleChoicePage);
+// process answer request
+router.post('/answer/:id', homeController.processAnswerRequest);
 
-// // GET Route text answer page
-// router.get('/TextAnswer/:id', homeController.displayTextAnswerPage);
+// GET Route results page
+router.get('/results/:id', homeController.displayResultsPage);
 
 // Get route create page//
-router.get('/create', homeController.displayCreatePage);
+router.get('/create', checkAuthentication, homeController.displayCreatePage);
 
 // process create request
-router.post('/create', homeController.processCreateRequest)
+router.post('/create', checkAuthentication, homeController.processCreateRequest)
 
 // display edit page
-router.get('/edit/:id', homeController.displayEditPage);
+router.get('/edit/:id', checkAuthentication, homeController.displayEditPage);
 
 // process edit request
-router.post('/edit/:id', homeController.processEditRequest)
+router.post('/edit/:id', checkAuthentication, homeController.processEditRequest)
 
 //delete survey
-router.get('/delete/:id', homeController.deleteSurvey);
+router.get('/delete/:id', checkAuthentication, homeController.deleteSurvey);
 
 module.exports = router;

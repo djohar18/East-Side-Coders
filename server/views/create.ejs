@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-offset-3 col-md-8">
             
-           <p> <h1><%= title %></h1></p>
+           <p> <h1 class= "create-title"><strong><%= title %></strong></h1></p>
 
             <form class="form" method="POST" action="/create">                
 
@@ -17,8 +17,8 @@
                         onchange="typeChanged(this)" required>
                         <option value="" selected disabled>Choose a type</option>
                         <option value="Agree or Disagree">Agree or Disagree</option>
-                        <option value="MCQ">Multiple Choice </option>
-                        <option value="Text">Text Question</option>
+                        <option value="Multiple Choice">Multiple Choice </option>
+                        <option value="Short Answer">Short Answer</option>
                     </select>
                 </div>
 
@@ -36,34 +36,31 @@
 
                 <!-- Options Element -->
                 <div class="col-sm-8 mb-3" id="optionDiv" style="display:none">
-                    <div id="options" class="mt-3">
-                         <label class="form-label">Enter Options:</label>
-                   
-                        <input class="survey mt-2" type="text" class="form-control"  placeholder="Enter Option 1" name="option1">
-                        
-                       
-                        <input class="survey mt-2" type="text" class="form-control" placeholder="Enter Option 2" id="option" name="option2">
-
-                       
-                        <input class="survey mt-2" type="text" class="form-control" placeholder="Enter Option 3" id="option" name="option3">
-                    </div>
-                   
+                        <label class="form-label">Enter Options:</label>
+                        <a href="#" id="addOption"><button type="button" class="btn btn-primary btn-sm">+</button></a>
+                        <a href="#" id="removeOption"><button type="button" class="btn btn-warning btn-sm">-</button></a>
+                        <div id="options">
+                            <input class="survey mt-2" type="text" placeholder="Enter Option" name="options">
+                        </div>
                 </div>
-                 <div class= button>
+
+                <!-- Submit and Cancel Button Element -->
+                <div class= button>
                     <button class="btn btn-primary" type="submit" >
                        <i class="far fa-submit"></i>Submit
                     </button>                   
                     <a href="/" class="btn btn-warning">
-                    <i class="fas fa-undo"></i> Cancel</a>
-                </div>             
-               </form>
-            </div>
-        </form>
+                    <i class="fas fa-undo"></i> Cancel</a>  
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
 </div>
 </section>
+
+<script src="/Scripts/create.js"></script>
 
 <% include partials/bottom_nav.ejs %>
 <% include partials/footer.ejs %>
