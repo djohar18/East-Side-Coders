@@ -6,6 +6,7 @@ let surveyModel = mongoose.Schema({
     active: Boolean,
     question: String,
     options: [mongoose.Schema.Types.Mixed],
+    createdBy: String,
 }, {
     collection: "surveys"
 });

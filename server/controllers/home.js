@@ -71,6 +71,8 @@ module.exports.displayCreatePage = (req, res, next) => {
 // process create request
 module.exports.processCreateRequest = (req, res, next) => {
     let options = [];
+    let userId = req.user.username;
+    console.log(userId)
 
     if (req.body.type == "Multiple Choice") {
         req.body.options.forEach(option => {
@@ -96,7 +98,8 @@ module.exports.processCreateRequest = (req, res, next) => {
     let newSurvey = Survey({
         "type": req.body.type,
         "question": req.body.question,
-        "options": options
+        "options": options,
+        "createdBy": userId
     });
 
     if (req.body.active) {
